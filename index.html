@@ -1,0 +1,596 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>🎓 Grade 8 Student Profile Form – Padmodaya Secondary School</title>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --primary: #1a3a6c;
+    --accent: #e84545;
+    --gold: #f5a623;
+    --teal: #00b4a6;
+    --light-bg: #f0f4ff;
+    --card-bg: #ffffff;
+    --border: #d0daf5;
+    --text: #1e2b4a;
+    --muted: #6b7fa8;
+    --success: #27ae60;
+    --section-gradient-1: linear-gradient(135deg, #1a3a6c, #2a5298);
+    --section-gradient-2: linear-gradient(135deg, #e84545, #c0392b);
+    --section-gradient-3: linear-gradient(135deg, #00b4a6, #009688);
+    --section-gradient-4: linear-gradient(135deg, #f5a623, #e67e22);
+    --section-gradient-5: linear-gradient(135deg, #6c5ce7, #a855f7);
+    --section-gradient-6: linear-gradient(135deg, #e84393, #c2185b);
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'Poppins', sans-serif;
+    background: var(--light-bg);
+    background-image:
+      radial-gradient(circle at 10% 20%, rgba(26,58,108,0.07) 0%, transparent 50%),
+      radial-gradient(circle at 90% 80%, rgba(232,69,69,0.07) 0%, transparent 50%);
+    min-height: 100vh;
+    color: var(--text);
+    padding: 20px 16px 60px;
+  }
+  .form-header {
+    background: var(--section-gradient-1);
+    border-radius: 20px 20px 0 0;
+    padding: 36px 32px 28px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 8px 32px rgba(26,58,108,0.3);
+  }
+  .form-header::before {
+    content: '';
+    position: absolute;
+    top: -60px; right: -60px;
+    width: 200px; height: 200px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.07);
+  }
+  .form-header::after {
+    content: '';
+    position: absolute;
+    bottom: -40px; left: -40px;
+    width: 150px; height: 150px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.05);
+  }
+  .school-logo { font-size: 52px; margin-bottom: 6px; }
+  .school-name { font-family: 'Nunito', sans-serif; font-size: 22px; font-weight: 900; color: #fff; margin-bottom: 4px; }
+  .school-address { color: rgba(255,255,255,0.75); font-size: 13px; margin-bottom: 16px; }
+  .form-title { background: rgba(255,255,255,0.12); border: 1px solid rgba(255,255,255,0.2); border-radius: 50px; display: inline-block; padding: 8px 28px; font-size: 15px; font-weight: 700; color: #fff; margin-bottom: 12px; }
+  .form-subtitle { font-size: 12px; color: rgba(255,255,255,0.6); }
+  .teacher-badge { position: absolute; top: 16px; right: 20px; background: rgba(255,255,255,0.15); border: 1px solid rgba(255,255,255,0.25); border-radius: 12px; padding: 6px 12px; font-size: 11px; color: rgba(255,255,255,0.9); font-weight: 600; }
+  .grade-badge { display: inline-block; background: linear-gradient(135deg, #f5a623, #e67e22); color: white; font-family: 'Nunito', sans-serif; font-weight: 800; font-size: 12px; padding: 3px 12px; border-radius: 50px; margin-left: 8px; vertical-align: middle; }
+  .form-container { background: var(--card-bg); border-radius: 0 0 20px 20px; box-shadow: 0 8px 40px rgba(26,58,108,0.12); overflow: hidden; max-width: 760px; margin: 0 auto; }
+  .form-wrapper { max-width: 760px; margin: 0 auto; }
+  .required-note { background: #fff8f0; border-left: 4px solid var(--gold); padding: 12px 20px; font-size: 12.5px; color: #7a5a20; display: flex; align-items: center; gap: 8px; }
+  .section-header { padding: 14px 28px 14px 24px; font-family: 'Nunito', sans-serif; font-size: 15px; font-weight: 800; color: white; display: flex; align-items: center; gap: 10px; }
+  .section-header.s1 { background: var(--section-gradient-1); }
+  .section-header.s2 { background: var(--section-gradient-2); }
+  .section-header.s3 { background: var(--section-gradient-3); }
+  .section-header.s4 { background: var(--section-gradient-4); }
+  .section-header.s5 { background: var(--section-gradient-5); }
+  .section-header.s6 { background: var(--section-gradient-6); }
+  .section-emoji { font-size: 20px; }
+  .form-section { padding: 24px 28px; border-bottom: 1px solid #eef2ff; }
+  .form-group { margin-bottom: 22px; }
+  .form-group:last-child { margin-bottom: 0; }
+  label { display: block; font-size: 13.5px; font-weight: 600; color: var(--text); margin-bottom: 7px; }
+  label .req { color: var(--accent); margin-left: 3px; }
+  input[type="text"], input[type="tel"], input[type="number"], select, textarea {
+    width: 100%; padding: 12px 16px; border: 2px solid var(--border); border-radius: 10px;
+    font-family: 'Poppins', sans-serif; font-size: 13.5px; color: var(--text);
+    background: #fafbff; transition: border-color 0.2s, box-shadow 0.2s; outline: none; appearance: none;
+  }
+  input:focus, select:focus, textarea:focus {
+    border-color: var(--primary); background: #fff; box-shadow: 0 0 0 4px rgba(26,58,108,0.1);
+  }
+  select {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%236b7fa8' stroke-width='2' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+    background-repeat: no-repeat; background-position: right 14px center; padding-right: 40px; cursor: pointer;
+  }
+  .radio-group { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 6px; }
+  .radio-option { position: relative; }
+  .radio-option input { position: absolute; opacity: 0; width: 0; height: 0; }
+  .radio-option label { display: inline-flex; align-items: center; gap: 6px; padding: 8px 18px; border: 2px solid var(--border); border-radius: 50px; cursor: pointer; font-size: 13px; font-weight: 600; color: var(--muted); background: #fafbff; transition: all 0.2s; margin: 0; }
+  .radio-option input:checked + label { border-color: var(--primary); background: var(--primary); color: white; box-shadow: 0 2px 10px rgba(26,58,108,0.25); }
+  .sub-fields { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-top: 10px; }
+  .sub-field label { font-size: 12px; color: var(--muted); font-weight: 600; margin-bottom: 5px; }
+  .inline-fields { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 14px; }
+  .field-divider { height: 1px; background: linear-gradient(to right, transparent, var(--border), transparent); margin: 6px 0 18px; }
+  .helper-text { font-size: 11.5px; color: var(--muted); margin-top: 5px; }
+  .submit-section { padding: 28px 28px 36px; text-align: center; background: #f8f9ff; }
+  .btn-submit {
+    background: var(--section-gradient-1); color: white; border: none; padding: 16px 56px;
+    border-radius: 50px; font-family: 'Nunito', sans-serif; font-size: 16px; font-weight: 800;
+    cursor: pointer; transition: transform 0.2s, box-shadow 0.2s;
+    box-shadow: 0 6px 24px rgba(26,58,108,0.35); display: inline-flex; align-items: center; gap: 10px;
+  }
+  .btn-submit:hover { transform: translateY(-2px); box-shadow: 0 10px 32px rgba(26,58,108,0.45); }
+  .btn-submit:disabled { opacity: 0.6; cursor: not-allowed; transform: none; }
+  .btn-clear { background: transparent; color: var(--muted); border: none; padding: 12px 24px; border-radius: 50px; font-family: 'Poppins', sans-serif; font-size: 13px; font-weight: 600; cursor: pointer; margin-left: 10px; transition: color 0.2s; }
+  .btn-clear:hover { color: var(--accent); }
+  .submit-note { font-size: 12px; color: var(--muted); margin-top: 14px; }
+  .form-footer { text-align: center; margin-top: 24px; font-size: 12px; color: var(--muted); }
+  .form-footer strong { color: var(--primary); }
+  .progress-bar-wrap { background: #e8eeff; height: 6px; border-radius: 0; overflow: hidden; }
+  .progress-bar-fill { height: 100%; background: var(--section-gradient-1); width: 0%; transition: width 0.4s ease; }
+
+  /* TOAST */
+  .toast {
+    position: fixed; bottom: 30px; right: 30px; padding: 16px 24px;
+    border-radius: 14px; font-size: 14px; font-weight: 600;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.2);
+    transform: translateY(100px); opacity: 0;
+    transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+    z-index: 999; display: flex; align-items: center; gap: 10px; color: white;
+  }
+  .toast.success { background: #27ae60; }
+  .toast.error { background: #e74c3c; }
+  .toast.loading { background: #2a5298; }
+  .toast.show { transform: translateY(0); opacity: 1; }
+
+  /* SPINNER */
+  .spinner { display: inline-block; width: 18px; height: 18px; border: 3px solid rgba(255,255,255,0.3); border-top-color: white; border-radius: 50%; animation: spin 0.8s linear infinite; }
+  @keyframes spin { to { transform: rotate(360deg); } }
+
+  /* SUCCESS OVERLAY */
+  .success-overlay {
+    display: none; position: fixed; inset: 0; background: rgba(26,58,108,0.92);
+    z-index: 1000; align-items: center; justify-content: center; flex-direction: column;
+  }
+  .success-overlay.show { display: flex; }
+  .success-card {
+    background: white; border-radius: 24px; padding: 48px 40px; text-align: center;
+    max-width: 400px; width: 90%; box-shadow: 0 24px 64px rgba(0,0,0,0.4);
+    animation: popIn 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+  }
+  @keyframes popIn { from { transform: scale(0.7); opacity: 0; } to { transform: scale(1); opacity: 1; } }
+  .success-icon { font-size: 64px; margin-bottom: 16px; }
+  .success-title { font-family: 'Nunito', sans-serif; font-size: 24px; font-weight: 900; color: var(--primary); margin-bottom: 10px; }
+  .success-msg { font-size: 14px; color: var(--muted); line-height: 1.6; margin-bottom: 24px; }
+  .btn-new { background: var(--section-gradient-1); color: white; border: none; padding: 14px 32px; border-radius: 50px; font-family: 'Nunito', sans-serif; font-size: 15px; font-weight: 800; cursor: pointer; }
+
+  @media (max-width: 600px) {
+    .form-header { padding: 28px 16px 22px; }
+    .form-section { padding: 18px 16px; }
+    .school-name { font-size: 17px; }
+    .teacher-badge { position: static; margin-top: 12px; display: inline-block; }
+    .inline-fields { grid-template-columns: 1fr; }
+    .sub-fields { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<div class="form-wrapper">
+  <div class="form-header">
+    <div class="teacher-badge">👨‍🏫 Class Teacher: Sunil Kumar Kharel</div>
+    <div class="school-logo">🏫</div>
+    <div class="school-name">Padmodaya Secondary School</div>
+    <div class="school-address">📍 Ramshah Path, Kathmandu, Nepal</div>
+    <div class="form-title">📋 Grade 8 Student Profile Form <span class="grade-badge">2083/84 B.S.</span></div>
+    <div class="form-subtitle">⚠️ Please fill in all required fields marked with <span style="color:#e84545;font-weight:700;">*</span> &nbsp;|&nbsp; 🔒 Data saved securely to school records</div>
+  </div>
+
+  <div class="form-container">
+    <div class="progress-bar-wrap"><div class="progress-bar-fill" id="progressBar"></div></div>
+    <div class="required-note">⚠️ Fields marked with <strong style="color:#e84545;">&nbsp;*&nbsp;</strong> are required. Your data will be saved directly to the school's Google Sheet. 📊</div>
+
+    <form id="profileForm" onsubmit="handleSubmit(event)">
+
+      <!-- SECTION 1 -->
+      <div class="section-header s1"><span class="section-emoji">🧑‍🎓</span> Section 1: Student Information</div>
+      <div class="form-section">
+        <div class="form-group">
+          <label>📝 Your Full Name <span class="req">*</span></label>
+          <input type="text" id="fullName" placeholder="Enter your full name (e.g., Ram Bahadur Thapa)" required oninput="updateProgress()">
+        </div>
+        <div class="inline-fields">
+          <div class="form-group">
+            <label>🏫 Class <span class="req">*</span></label>
+            <select id="className" required onchange="updateProgress()">
+              <option value="" disabled selected>Select class…</option>
+              <option>4</option><option>5</option><option>6</option>
+              <option>7</option><option selected>8</option>
+              <option>9</option><option>10</option>
+            </select>
+          </div>
+          <div class="form-group" style="grid-column: span 2;">
+            <label>🔠 Section <span class="req">*</span></label>
+            <div class="radio-group">
+              <div class="radio-option"><input type="radio" name="section" id="sA" value="A" required onchange="updateProgress()"><label for="sA">🅰️ A</label></div>
+              <div class="radio-option"><input type="radio" name="section" id="sB" value="B" onchange="updateProgress()"><label for="sB">🅱️ B</label></div>
+              <div class="radio-option"><input type="radio" name="section" id="sC" value="C" onchange="updateProgress()"><label for="sC">🔵 C</label></div>
+              <div class="radio-option"><input type="radio" name="section" id="sD" value="D" onchange="updateProgress()"><label for="sD">🔷 D</label></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- SECTION 2 -->
+      <div class="section-header s2"><span class="section-emoji">👨</span> Section 2: Father's Information</div>
+      <div class="form-section">
+        <div class="form-group">
+          <label>👨‍👦 Father's Full Name <span class="req">*</span></label>
+          <input type="text" id="fatherName" placeholder="Enter father's full name" required oninput="updateProgress()">
+        </div>
+        <div class="form-group">
+          <label>💼 Father's Occupation <span class="req">*</span></label>
+          <input type="text" id="fatherOccupation" placeholder="e.g., Farmer, Teacher, Business, Government Job…" required oninput="updateProgress()">
+        </div>
+        <div class="form-group">
+          <label>📱 Father's Mobile No. <span class="req">*</span></label>
+          <input type="tel" id="fatherMobile" placeholder="98XXXXXXXX" required oninput="updateProgress()">
+        </div>
+      </div>
+
+      <!-- SECTION 3 -->
+      <div class="section-header s3"><span class="section-emoji">👩</span> Section 3: Mother's Information</div>
+      <div class="form-section">
+        <div class="form-group">
+          <label>👩‍👦 Mother's Full Name <span class="req">*</span></label>
+          <input type="text" id="motherName" placeholder="Enter mother's full name" required oninput="updateProgress()">
+        </div>
+        <div class="form-group">
+          <label>💼 Mother's Occupation <span class="req">*</span></label>
+          <input type="text" id="motherOccupation" placeholder="e.g., Homemaker, Teacher, Business…" required oninput="updateProgress()">
+        </div>
+        <div class="form-group">
+          <label>📱 Mother's Mobile No. <span class="req">*</span></label>
+          <input type="tel" id="motherMobile" placeholder="98XXXXXXXX" required oninput="updateProgress()">
+        </div>
+      </div>
+
+      <!-- SECTION 4 -->
+      <div class="section-header s4"><span class="section-emoji">🏠</span> Section 4: Local Guardian's Information</div>
+      <div class="form-section">
+        <div class="form-group">
+          <label>🧑 Local Guardian's Name</label>
+          <input type="text" id="guardianName" placeholder="Enter guardian's full name (if applicable)">
+          <p class="helper-text">💡 Fill this only if you are staying away from your parents</p>
+        </div>
+        <div class="form-group">
+          <label>💼 Local Guardian's Occupation</label>
+          <input type="text" id="guardianOccupation" placeholder="e.g., Shopkeeper, Teacher, Business…">
+        </div>
+        <div class="form-group">
+          <label>📱 Local Guardian's Mobile No.</label>
+          <input type="tel" id="guardianMobile" placeholder="98XXXXXXXX">
+        </div>
+        <div class="form-group">
+          <label>🤝 Your Relation With Local Guardian</label>
+          <select id="guardianRelation">
+            <option value="" disabled selected>Select relation…</option>
+            <option>Uncle / Maternal Uncle</option>
+            <option>Aunt / Maternal Aunt</option>
+            <option>Grandfather</option>
+            <option>Grandmother</option>
+            <option>Elder Brother</option>
+            <option>Elder Sister</option>
+            <option>Family Friend</option>
+            <option>Other Relative</option>
+            <option>Other (Specify Below)</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>✏️ If Other, please specify:</label>
+          <input type="text" id="otherRelation" placeholder="Describe your relation with guardian…">
+        </div>
+      </div>
+
+      <!-- SECTION 5 -->
+      <div class="section-header s5"><span class="section-emoji">📍</span> Section 5: Address Details</div>
+      <div class="form-section">
+        <div class="form-group">
+          <label>🏡 Permanent Address <span class="req">*</span></label>
+          <div class="sub-fields">
+            <div class="sub-field">
+              <label>🗺️ Province</label>
+              <select id="permProvince" required>
+                <option value="" disabled selected>Select Province…</option>
+                <option>Koshi Province (No. 1)</option>
+                <option>Madhesh Province (No. 2)</option>
+                <option>Bagmati Province (No. 3)</option>
+                <option>Gandaki Province (No. 4)</option>
+                <option>Lumbini Province (No. 5)</option>
+                <option>Karnali Province (No. 6)</option>
+                <option>Sudurpashchim Province (No. 7)</option>
+              </select>
+            </div>
+            <div class="sub-field">
+              <label>🏞️ District</label>
+              <input type="text" id="permDistrict" placeholder="e.g., Kathmandu, Lalitpur…">
+            </div>
+            <div class="sub-field">
+              <label>🏘️ Municipality / VDC</label>
+              <input type="text" id="permMunicipality" placeholder="e.g., Kathmandu Metropolitan City…">
+            </div>
+            <div class="sub-field">
+              <label>🔢 Ward No.</label>
+              <input type="number" id="permWard" placeholder="e.g., 12" min="1" max="50">
+            </div>
+            <div class="sub-field" style="grid-column: 1 / -1;">
+              <label>🌳 Village / Tole Name</label>
+              <input type="text" id="permVillage" placeholder="e.g., Baneshwor Tole, Chabahil…">
+            </div>
+          </div>
+        </div>
+        <div class="field-divider"></div>
+        <div class="form-group">
+          <label>🏙️ Temporary Address (Current Residence)</label>
+          <div class="sub-fields">
+            <div class="sub-field">
+              <label>🗺️ Province</label>
+              <select id="tempProvince">
+                <option value="" disabled selected>Select Province…</option>
+                <option>Koshi Province (No. 1)</option>
+                <option>Madhesh Province (No. 2)</option>
+                <option>Bagmati Province (No. 3)</option>
+                <option>Gandaki Province (No. 4)</option>
+                <option>Lumbini Province (No. 5)</option>
+                <option>Karnali Province (No. 6)</option>
+                <option>Sudurpashchim Province (No. 7)</option>
+              </select>
+            </div>
+            <div class="sub-field">
+              <label>🏞️ District</label>
+              <input type="text" id="tempDistrict" placeholder="e.g., Kathmandu…">
+            </div>
+            <div class="sub-field">
+              <label>🏘️ Municipality / VDC</label>
+              <input type="text" id="tempMunicipality" placeholder="e.g., Kathmandu Metropolitan City…">
+            </div>
+            <div class="sub-field">
+              <label>🔢 Ward No.</label>
+              <input type="number" id="tempWard" placeholder="e.g., 5" min="1" max="50">
+            </div>
+            <div class="sub-field" style="grid-column: 1 / -1;">
+              <label>📌 Place / Tole Name</label>
+              <input type="text" id="tempPlace" placeholder="e.g., Ramshah Path, Dillibazar…">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- SECTION 6 -->
+      <div class="section-header s6"><span class="section-emoji">🏫</span> Section 6: School History & Admission Details</div>
+      <div class="form-section">
+        <div class="form-group">
+          <label>🏫 Previous School Name <span class="req">*</span></label>
+          <input type="text" id="prevSchool" placeholder="Enter the name of your previous school" required oninput="updateProgress()">
+        </div>
+        <div class="form-group">
+          <label>📍 Address of Previous School <span class="req">*</span></label>
+          <input type="text" id="prevSchoolAddress" placeholder="City / District / Place of previous school" required oninput="updateProgress()">
+        </div>
+        <div class="form-group">
+          <label>📅 When did you get admitted to this school? <span class="req">*</span></label>
+          <div class="inline-fields">
+            <div>
+              <label style="font-size:12px;color:var(--muted);">📆 Year (B.S.)</label>
+              <input type="text" id="admissionYear" placeholder="e.g., 2081" required oninput="updateProgress()">
+            </div>
+            <div>
+              <label style="font-size:12px;color:var(--muted);">🗓️ Month</label>
+              <select id="admissionMonth" required onchange="updateProgress()">
+                <option value="" disabled selected>Month…</option>
+                <option>Baisakh</option><option>Jestha</option><option>Ashadh</option>
+                <option>Shrawan</option><option>Bhadra</option><option>Ashwin</option>
+                <option>Kartik</option><option>Mangsir</option><option>Poush</option>
+                <option>Magh</option><option>Falgun</option><option>Chaitra</option>
+              </select>
+            </div>
+            <div>
+              <label style="font-size:12px;color:var(--muted);">📌 Gate (Date)</label>
+              <input type="number" id="admissionDate" placeholder="e.g., 15" min="1" max="32" oninput="updateProgress()">
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label>🆘 Emergency Contact – Name & Number <span class="req">*</span></label>
+          <div class="inline-fields">
+            <div style="grid-column: span 2;">
+              <label style="font-size:12px;color:var(--muted);">🧑 Contact Person's Name</label>
+              <input type="text" id="emergencyName" placeholder="Full name of emergency contact" required oninput="updateProgress()">
+            </div>
+            <div>
+              <label style="font-size:12px;color:var(--muted);">📞 Mobile Number</label>
+              <input type="tel" id="emergencyNumber" placeholder="98XXXXXXXX" required oninput="updateProgress()">
+            </div>
+          </div>
+          <p class="helper-text">🚨 This person will be contacted during emergencies. Please provide an active number.</p>
+        </div>
+      </div>
+
+      <!-- SUBMIT -->
+      <div class="submit-section">
+        <div style="margin-bottom:20px;">
+          <p style="font-size:13px;color:var(--muted);margin-bottom:6px;">📊 Form Completion: <span id="pctLabel">0%</span></p>
+          <div style="height:8px;background:#e8eeff;border-radius:50px;overflow:hidden;max-width:400px;margin:0 auto;">
+            <div id="submitProgress" style="height:100%;background:linear-gradient(90deg,#1a3a6c,#2a5298);width:0%;transition:width 0.4s;border-radius:50px;"></div>
+          </div>
+        </div>
+        <button type="submit" class="btn-submit" id="submitBtn">
+          📤 Submit Profile Form
+        </button>
+        <button type="button" class="btn-clear" onclick="clearForm()">🗑️ Clear All</button>
+        <p class="submit-note">
+          🔒 Your information is saved securely to the school's Google Sheet.<br>
+          ✅ Once submitted, please inform your class teacher: <strong>Sunil Kumar Kharel</strong>
+        </p>
+      </div>
+
+    </form>
+  </div>
+
+  <div class="form-footer">
+    <p>🏫 <strong>Padmodaya Secondary School</strong> &nbsp;|&nbsp; Ramshah Path, Kathmandu &nbsp;|&nbsp; 👨‍🏫 <strong>Sunil Kumar Kharel</strong></p>
+    <p style="margin-top:6px;">📚 Grade 8 Student Profile &nbsp;|&nbsp; 🗓️ Academic Year 2081/82 B.S.</p>
+  </div>
+</div>
+
+<!-- TOAST -->
+<div class="toast" id="toast"></div>
+
+<!-- SUCCESS OVERLAY -->
+<div class="success-overlay" id="successOverlay">
+  <div class="success-card">
+    <div class="success-icon">🎉</div>
+    <div class="success-title">Profile Submitted!</div>
+    <div class="success-msg">
+      Your student profile has been saved successfully to the school's records. 📊<br><br>
+      🙏 Thank you! Please inform your class teacher<br><strong>Sunil Kumar Kharel</strong> that you have submitted the form.
+    </div>
+    <button class="btn-new" onclick="newSubmission()">📝 Submit Another Response</button>
+  </div>
+</div>
+
+<script>
+  const SHEET_URL = "https://script.google.com/macros/s/AKfycbzsNL0YlP3sqom7vgZHuhozcrIt37GhcAD1NE0__iDWFBZMlKXCG3_2nBNN8EkExLxIuA/exec";
+
+  function getVal(id) {
+    const el = document.getElementById(id);
+    return el ? el.value.trim() : '';
+  }
+
+  function getRadio(name) {
+    const el = document.querySelector(`input[name="${name}"]:checked`);
+    return el ? el.value : '';
+  }
+
+  function showToast(msg, type = 'success') {
+    const toast = document.getElementById('toast');
+    toast.textContent = msg;
+    toast.className = `toast ${type} show`;
+    setTimeout(() => toast.classList.remove('show'), 4000);
+  }
+
+  function updateProgress() {
+    const form = document.getElementById('profileForm');
+    const required = form.querySelectorAll('[required]');
+    let filled = 0;
+    required.forEach(el => {
+      if (el.type === 'radio') {
+        if (document.querySelector(`input[name="${el.name}"]:checked`)) filled++;
+      } else if (el.value.trim() !== '') filled++;
+    });
+    // Deduplicate radio groups
+    const radioNames = new Set([...form.querySelectorAll('input[type="radio"][required]')].map(r => r.name));
+    const totalFields = form.querySelectorAll('[required]:not(input[type="radio"])').length + radioNames.size;
+    let filledFields = [...form.querySelectorAll('[required]:not(input[type="radio"])')].filter(el => el.value.trim() !== '').length;
+    radioNames.forEach(name => { if (document.querySelector(`input[name="${name}"]:checked`)) filledFields++; });
+
+    const pct = Math.round((filledFields / totalFields) * 100);
+    document.getElementById('progressBar').style.width = pct + '%';
+    document.getElementById('submitProgress').style.width = pct + '%';
+    document.getElementById('pctLabel').textContent = pct + '%';
+  }
+
+  async function handleSubmit(e) {
+    e.preventDefault();
+
+    const data = {
+      fullName: getVal('fullName'),
+      className: getVal('className'),
+      section: getRadio('section'),
+      fatherName: getVal('fatherName'),
+      fatherOccupation: getVal('fatherOccupation'),
+      fatherMobile: getVal('fatherMobile'),
+      motherName: getVal('motherName'),
+      motherOccupation: getVal('motherOccupation'),
+      motherMobile: getVal('motherMobile'),
+      guardianName: getVal('guardianName'),
+      guardianOccupation: getVal('guardianOccupation'),
+      guardianMobile: getVal('guardianMobile'),
+      guardianRelation: getVal('guardianRelation'),
+      otherRelation: getVal('otherRelation'),
+      permProvince: getVal('permProvince'),
+      permDistrict: getVal('permDistrict'),
+      permMunicipality: getVal('permMunicipality'),
+      permWard: getVal('permWard'),
+      permVillage: getVal('permVillage'),
+      tempProvince: getVal('tempProvince'),
+      tempDistrict: getVal('tempDistrict'),
+      tempMunicipality: getVal('tempMunicipality'),
+      tempWard: getVal('tempWard'),
+      tempPlace: getVal('tempPlace'),
+      prevSchool: getVal('prevSchool'),
+      prevSchoolAddress: getVal('prevSchoolAddress'),
+      admissionYear: getVal('admissionYear'),
+      admissionMonth: getVal('admissionMonth'),
+      admissionDate: getVal('admissionDate'),
+      emergencyName: getVal('emergencyName'),
+      emergencyNumber: getVal('emergencyNumber'),
+    };
+
+    // Validate section
+    if (!data.section) {
+      showToast('⚠️ Please select your Section (A / B / C / D)', 'error');
+      return;
+    }
+
+    const btn = document.getElementById('submitBtn');
+    btn.disabled = true;
+    btn.innerHTML = '<span class="spinner"></span> Submitting…';
+    showToast('📤 Sending your data to school records…', 'loading');
+
+    try {
+      await fetch(SHEET_URL, {
+        method: 'POST',
+        mode: 'no-cors',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data)
+      });
+
+      // no-cors means we can't read response, but if no error thrown = success
+      btn.innerHTML = '✅ Submitted!';
+      document.getElementById('successOverlay').classList.add('show');
+
+    } catch (err) {
+      showToast('❌ Submission failed. Please check your internet and try again.', 'error');
+      btn.disabled = false;
+      btn.innerHTML = '📤 Submit Profile Form';
+    }
+  }
+
+  function newSubmission() {
+    document.getElementById('successOverlay').classList.remove('show');
+    document.getElementById('profileForm').reset();
+    document.getElementById('submitBtn').disabled = false;
+    document.getElementById('submitBtn').innerHTML = '📤 Submit Profile Form';
+    updateProgress();
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  function clearForm() {
+    if (confirm('🗑️ Are you sure you want to clear all fields?')) {
+      document.getElementById('profileForm').reset();
+      document.getElementById('submitBtn').disabled = false;
+      document.getElementById('submitBtn').innerHTML = '📤 Submit Profile Form';
+      updateProgress();
+    }
+  }
+
+  // Animate sections on scroll
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) { e.target.style.opacity = '1'; e.target.style.transform = 'translateY(0)'; }
+    });
+  }, { threshold: 0.08 });
+  document.querySelectorAll('.form-section').forEach(s => {
+    s.style.opacity = '0'; s.style.transform = 'translateY(20px)';
+    s.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+    observer.observe(s);
+  });
+
+  updateProgress();
+</script>
+</body>
+</html>
